@@ -173,3 +173,76 @@ void registr() {
         }
     }
 }
+
+void login() {
+    int count = 0, choice, key = 3;
+    char ch;
+    string id, pass, encPass = "", line, word = "";
+    string rid, ru_id, ru_pass;
+    bool password = false;
+    bool ID = false;
+    system("cls");
+    do{
+        pass = "";
+        encPass = "";
+        word = "";
+        password = false;
+        ID = false;
+        if(count > 0)
+            cout << "\nFailed to login, try again.\n";
+        cout << "please enter your ID: ";
+        cin >> id;
+        cout << "PASSWORD :";
+        while(true){
+            ch = getch();
+            if(ch == 8){
+                pass.pop_back();
+                cout << "\b \b";
+            }
+            else if(ch == 13)
+                break;
+            else{
+                cout << '*';
+                pass += ch;
+            }
+        }
+
+        for(int i = 0; i < pass.length(); ++i){
+            if(i >= shifts)
+                encPass += pass[i];
+        }
+        for(int i = 0; i <= shifts-1; ++i)
+            encPass += pass[i];
+
+        ifstream input("database");
+        while(input.peek() != EOF){
+            while(getline(input, line)){
+                for(int i = 0; i < line.length(); ++i){
+                    if(line[i] != ' ' && line[i] != '\n')
+                        word += line[i];
+                    else{
+                        if(word == encPass)
+                            password = true;
+                        else if(word == id)
+                            ID = true;
+                        word = "";
+                    }
+                }
+            }
+        }
+        count += 1;
+        input.close();
+    }while((!password || !ID) && count < 3);
+
+    if(password && ID){
+        cout << "\nSuccessful login, welcome " << id << "\nThanks for logging in..\n";
+
+    }else{
+        cout << endl;
+        cout<< "\n...FAILED LOGIN.... \n This the third try you are denied from accessing to the system, Try again.\n\n";
+        menu();
+    }
+}
+
+
+
