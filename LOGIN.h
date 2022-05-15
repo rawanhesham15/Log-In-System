@@ -10,6 +10,8 @@
 using namespace std;
 
 void registr();
+void login();
+void changepass();
 void menu();
 
 #endif //UNTITLED1_LOGIN_H
