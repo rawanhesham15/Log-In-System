@@ -2,7 +2,7 @@
 // Program Name: LogInSystem.cpp
 // Last Modification Date: 15/5/2022
 // Author1 and ID and Group: Rawan Hesham / 20211040 / S2
-// Author2 and ID and Group: xxxxx xxxxx
+// Author2 and ID and Group: Mariam Moutaz Mohamed Mounir/20210386/S2
 // Author3 and ID and Group: xxxxx xxxxx
 // Teaching Assistant: Eg.Nesma and Eg.Yousra
 // Purpose: Log In System and regestration.
