@@ -15,7 +15,8 @@ int main(){
     cout<<"1.Register"<<endl;
     cout<<"2.Login"<<endl;
     cout<<"3.Change Password"<<endl;
-    cout<<"4.Exit"<<endl;
+    cout<<"4.Forgot Password"<<endl;
+    cout<<"5.Exit"<<endl;
     cout<<"Enter your choice : ";
     cin>>choice;
     cout<<endl;
@@ -30,7 +31,7 @@ int main(){
         case 3:
             changepass();
             break;    
-        case 4:
+        case 5:
             cout<<"Thanks for using this System.\n";
             break;
         default:
