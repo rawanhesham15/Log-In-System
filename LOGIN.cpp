@@ -26,8 +26,43 @@ void menu(){
 
 //__________________________________________________________
 void registr() {
+
     string pass = "", pass2 = "";
     char ch;
+    string userName, ruserName;
+    string email, rEmail;
+    string mobileNumber, rmobileNumber;
+    
+    string encPass = "";
+    bool match = true;
+    int choice, key = 3;
+    string rid, ru_id, ru_pass;
+    system("cls");
+
+    ifstream profile_in;
+    ofstream profile_out;
+    profile_in.open("database");
+
+    userName = username_function();
+    email = email_function();
+    mobileNumber = mobilenumber_function();
+
+    cout << "Enter the ID :";
+    cin >> rid;
+    ifstream input("database.txt");
+    while (input >> ruserName >> rEmail >> rmobileNumber >> ru_id >> ru_pass) {
+        while (ru_id == rid) {
+            cout << "invalid\n";
+            cout << "Enter another ID :";
+            cin >> rid;
+        }
+        while (rEmail == email) {
+            cout << "invalid\n";
+            cout << "Enter another Email: ";
+            cin >> email;
+        }
+    }
+
 
     cout << "\nEnter the password: ";
     cout << "The password should contains:\n1- At least one uppercase letter(ABC).\n2- At least one lowercase letter(abc).\n3- At least one special character(@$!%*?&).\n4- At least one digit(123).\n5- 10 characters in length.\nEnter the password: ";
@@ -173,6 +208,12 @@ void registr() {
             }
         }
     }
+    ofstream reg("database", ios::app);
+    reg << userName << ' ' << email << ' ' << rid << ' ' << encPass << ' ' << mobileNumber << endl;
+    system("cls");
+    cout << "\nRegistration Sucessful\n";
+    menu();
+    reg.close();
 }
 
 //__________________________________________________________
