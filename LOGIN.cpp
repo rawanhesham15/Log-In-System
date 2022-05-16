@@ -15,6 +15,12 @@ void menu(){
         case 1:
             registr();
             break;
+         case 2:
+            login();
+            break; 
+        case 3:
+            changepass();  
+            break;   
         case 4:
             cout<<"Thanks for using this System.\n";
             break;
