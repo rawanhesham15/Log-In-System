@@ -538,3 +538,62 @@ void changepass() {
 }
 //__________________________________________________________
 
+void forgotPassword(){
+
+    int count = 0, choice, key = 3, j;
+    char ch, code[5], vcode[5], c;
+    string id, line, word = "";
+    string rid, ru_id, ru_pass;
+    bool ID = false;
+    system("clear");
+    do{
+        word = "";
+        ID = false;
+        if(count > 0)
+            cout << "\nWrong ID, try again.\n";
+        cout << "please enter your ID: ";
+        cin >> id;
+        ifstream input("database");
+        while(input.peek() != EOF){
+            while(getline(input, line)){
+                for(int i = 0; i < line.length(); ++i){
+                    if(line[i] != ' ' && line[i] != '\n')
+                        word += line[i];
+                    else{
+                         if(word == id)
+                             ID = true;
+                         word = "";
+                    }
+                }
+            }
+        }
+        count += 1;
+        input.close();
+    }while((!ID) && count < 3);
+    if( ID){
+        cout << "Correct ID..\n";
+        srand((unsigned )time(NULL));
+        for(j =0; j <4;j++){
+            c =rand()%10+48;
+             code[j] = c;
+        }
+        code[j]='\0';
+        cout << "VERIFICATION Code: " << code <<endl;
+        cout << "Enter your code: ";
+        cin >> vcode;
+        if (strcmp(code,vcode) == 0){
+          cout << "code verified \n";
+          //changepass();
+        }
+        else{
+            cout << "Not matching";
+        }
+
+    }else{
+        cout << endl;
+        cout<< "\n...Wrong ID .... \n";
+    }
+
+
+}
+//__________________________________________________________
